@@ -60,7 +60,7 @@ img {
 /*   filter: hue-rotate(200deg); */
 }
 p {
-  font-family: 'Zeyada';
+  font-family: 'Noto Sans Vietnamese', 'Zeyada', cursive;
   font-size: 50px;
   color: rgb(0,0,100);
   opacity: 0.75;
