@@ -138,6 +138,29 @@ canvas {
   z-index: 1000;
   pointer-events: none;
 }
+#glowing-heart {
+  filter: drop-shadow(0 0 2px rgb(255, 255, 255));
+
+  width: 350px;
+  height: 350px;
+  position: relative;
+  z-index: 10;
+}
+
+#glowing-heart::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+
+
+
   </style>
 
  </head>
@@ -148,7 +171,6 @@ canvas {
   <canvas id="pinkboard"></canvas>
 
   <div class="center-text" id="nhuquynh-btn">
-   <img src="img/meo.png" alt="Heart" style="width: 350px; height: 350px;">
    <div id="heart-text">Join my heart</div>
   </div>
 
