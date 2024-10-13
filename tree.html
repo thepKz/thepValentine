@@ -79,8 +79,12 @@
 
     <script>
         var year = getUrlParameter('year') || 2024;
-        var month = (getUrlParameter('month') || 2); // Adjust for 0-based index/ Note: JavaScript months are 0-based
+        var month = (getUrlParameter('month') || 2) - 1;// Adjust for 0-based index/ Note: JavaScript months are 0-based
         var day = getUrlParameter('day') || 20;
+        console.log("Year:", year);
+        console.log("Month:", month);
+        console.log("Day:", day);
+
         (function () {
             var canvas = $('#canvas');
 
@@ -219,13 +223,7 @@
                 });
             
             
-            
-                var year = getUrlParameter('year') || 2024;
-                var month = (getUrlParameter('month') || 2); // Adjust for 0-based index/ Note: JavaScript months are 0-based
-                var day = getUrlParameter('day') || 20;
-                console.log("Year:", year);
-                console.log("Month:", month);
-                console.log("Day:", day);
+
                 var together = new Date();
                 together.setFullYear(year, month, day);
                 together.setHours(0);
@@ -241,7 +239,37 @@
                     $await(Jscex.Async.sleep(1000));
                 }
             }));
-
+            function timeElapse(date) {
+                var current = new Date();
+                console.log("Current Day:", current.getDate());
+                console.log("Current Month:", current.getMonth());
+                console.log("Current Year:", current.getFullYear());
+                var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+                var days = Math.floor(seconds / (3600 * 24));
+                seconds = seconds % (3600 * 24);
+                var hours = Math.floor(seconds / 3600);
+                if (hours < 10) {
+                    hours = "0" + hours;
+                }
+                seconds = seconds % 3600;
+                var minutes = Math.floor(seconds / 60);
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+                seconds = seconds % 60;
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+                
+                // Log the calculated values
+                console.log("Days:", days);
+                console.log("Hours:", hours);
+                console.log("Minutes:", minutes);
+                console.log("Seconds:", seconds);
+            
+                var result = "<span class=\"digit\">" + days + "</span> ngày <span class=\"digit\">" + hours + "</span> giờ <span class=\"digit\">" + minutes + "</span> phút <span class=\"digit\">" + seconds + "</span> giây"; 
+                $("#clock").html(result);
+            }
             var runAsync = eval(Jscex.compile("async", function () {
                 $await(seedAnimate());
                 $await(growAnimate());
