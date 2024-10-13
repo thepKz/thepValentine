@@ -82,7 +82,7 @@ a {
 
 .say {
     margin-left: 5px;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Pacifico', 'Times New Roman', Times, serif;
     /* Sử dụng font chữ Roboto hoặc một font sans-serif khác nếu bạn muốn */
     font-size: 20px;
     /* Kích thước chữ */

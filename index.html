@@ -131,7 +131,7 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Arial', sans-serif;
+  font-family: 'Pacifico', 'Times New Roman', Times, serif;
   font-size: 24px;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -171,12 +171,28 @@ canvas {
   <canvas id="pinkboard"></canvas>
 
   <div class="center-text" id="nhuquynh-btn">
-   <div id="heart-text">Join my heart</div>
+   <div id="heart-text" style="background: linear-gradient(to right, #ffffff, #ff9cff);-webkit-background-clip: text; color: transparent; font-size: 30px; font-weight: bold;">Bấm zô đây nèeee</div>
   </div>
 
 
   
     <script>
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+    var year = getUrlParameter('year') || 2024;
+    var month = getUrlParameter('month') || 2; // Note: JavaScript months are 0-based
+    var day = getUrlParameter('day') || 20;
+    var userName = getUrlParameter('name') || 'cậu';
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("User Name:", userName); 
+        document.getElementById('user-name').textContent = userName;
+    });
+
         document.addEventListener("DOMContentLoaded", function() {
             function createHeart() {
                 const heart = document.createElement('div');
@@ -206,7 +222,7 @@ canvas {
                 nhuquynhBtn.style.opacity = 0.7;
                 
                 nhuquynhBtn.addEventListener("click", function() {
-                    window.location.href = "tree.html";
+                    window.location.href = "tree.html?year=" + year + "&month=" + month + "&day=" + day + "&name=" + userName;
                 });
             }, 3000);
         });

@@ -31,7 +31,7 @@
             <div id="text">
                 <div id="code" style="font-family: 'Roboto', sans-serif; line-height: 1.5; color: #333;">
                     <span class="say" style="font-size: 1.2rem; background: linear-gradient(to right, #FF69B4, #8A2BE2); -webkit-background-clip: text; color: transparent;">
-                        Này cậu ơii
+                        Này <span id="user-name"></span> ơii
                     </span><span style="font-size: 1.2rem;"> 🌸</span><br><br>
                     <span class="say" style="font-size: 1.2rem; background: linear-gradient(to right, #FF69B4, #8A2BE2); -webkit-background-clip: text; color: transparent;">
                         Cậu có biết khum?
@@ -214,12 +214,20 @@
                     "top": "0px",
                     "position": "absolute"
                 });
+            
+            
+            
+                var year = getUrlParameter('year') || 2024;
+                var month = getUrlParameter('month') || 2; // Note: JavaScript months are 0-based
+                var day = getUrlParameter('day') || 20;
+            
                 var together = new Date();
-                together.setFullYear(2022, 2, 20);
+                together.setFullYear(year, month, day);
                 together.setHours(0);
                 together.setMinutes(0);
                 together.setSeconds(0);
                 together.setMilliseconds(0);
+            
                 console.log("test");
                 $("#code").show().typewriter();
                 $("#clock-box").fadeIn(500);
@@ -242,6 +250,19 @@
 
             runAsync().start();
         })();
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        var userName = getUrlParameter('name') || 'cậu';
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("User Name:", userName); 
+            document.getElementById('user-name').textContent = userName;
+        });
     </script>
     <div style="text-align:center;margin:0px 0; font:normal 14px/24px 'MicroSoft YaHei';">
     </div>
