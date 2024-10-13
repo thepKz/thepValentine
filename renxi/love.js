@@ -169,7 +169,7 @@
 
             ctx.moveTo(0, 0);
             ctx.scale(0.75, 0.75);
-            ctx.font = "12px 微软雅黑,Verdana";
+            ctx.font = "20px Arial, sans-serif";
             ctx.fillText("Bấm vào đây", 23, 10);
             ctx.restore();
         },
@@ -177,7 +177,7 @@
             var ctx = this.tree.ctx, cirle = this.cirle;
             var point = cirle.point, scale = cirle.scale, radius = 26;
             var w = h = (radius * scale);
-            ctx.clearRect(point.x - w, point.y - h, 4 * w, 4 * h);
+            ctx.clearRect(point.x - w, point.y - h, 9 * w, 9 * h);
         },
         hover: function(x, y) {
             var ctx = this.tree.ctx;
@@ -527,10 +527,25 @@
         }
     }
 
+    // Add smooth animations using GSAP
+    function animateHeart() {
+        gsap.to(".heart", {
+            duration: 2,
+            scale: 1.2,
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut"
+        });
+    }
+
+    // Initialize animations
+    window.onload = function() {
+        animateHeart();
+    };
+
     window.random = random;
     window.bezier = bezier;
     window.Point = Point;
     window.Tree = Tree;
 
 })(window);
-
