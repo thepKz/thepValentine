@@ -218,7 +218,7 @@
             
             
                 var year = getUrlParameter('year') || 2024;
-                var month = getUrlParameter('month') || 2; // Note: JavaScript months are 0-based
+                var month = (getUrlParameter('month') || 2)-1; // Note: JavaScript months are 0-based
                 var day = getUrlParameter('day') || 20;
             
                 var together = new Date();
